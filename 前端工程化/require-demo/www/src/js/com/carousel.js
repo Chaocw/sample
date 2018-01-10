@@ -10,7 +10,6 @@ define(function(require, exports) {
 	var $ = require('jquery');
 
 	var Event = require('com/event');   //这是CMD的写法
-	console.log(Event);
 
 	var Carousel = (function() {
 
@@ -20,6 +19,7 @@ define(function(require, exports) {
 		function init($carousel) {
 			$carousel.each(function() {
 				var $cal = $(this);
+				console.log($cal);
 				if ($cal.hasClass('init')) {
 					return;
 				}
@@ -40,6 +40,7 @@ define(function(require, exports) {
 			this.$next = $carousel.find('.next');
 			this.imgWidth = $ct.find('li').width();
 			this.imgSize = $ct.find('li').size();
+			console.log(this.imgSize)
 
 			$ct.css('width', this.imgWidth * this.imgSize);
 			this.bind();
@@ -84,7 +85,7 @@ define(function(require, exports) {
 				var me = this;
 				this.clock = setInterval( function(){
 					me.showNext();
-				}, 3000 );
+				}, 500000 );
 			},
 
 			stopPlay: function(){

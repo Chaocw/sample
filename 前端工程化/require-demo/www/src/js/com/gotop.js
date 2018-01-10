@@ -17,7 +17,7 @@ define(['jquery'], function( $ ) {
 		init: function() {
 			var $el = $('#' + this.id);
 			if ($el.length === 0) {
-				console.log('回到顶部');
+				
 				this.$el = $('<div id="' + this.id + '" style="position: fixed; right: 10px; bottom: 10px; ">回到顶部</div>');
 				$('body').append(this.$el);
 			} else {

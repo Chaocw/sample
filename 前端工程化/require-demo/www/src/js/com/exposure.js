@@ -45,7 +45,7 @@ define(function(require) {
 		function _bind() {
 
 			var timer = null,
-				interval = 40;
+				interval = 400;
 
 			$(window).on('scroll', function(e) {
 				timer && clearTimeout(timer);
@@ -63,7 +63,8 @@ define(function(require) {
 			for (var i = 0; i < _queue.length; i++) {
 				var item = _queue[i];
 				if (_isShow(item.el)) {
-					item.cb.call(item.el[0]);
+					item.cb.call(item.el);
+					
 					if(item.type === 'every'){
 						arrTmp.push(item);
 					}

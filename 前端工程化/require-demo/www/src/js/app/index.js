@@ -13,9 +13,7 @@
 
 // 	new GoTop();
 // })
-
 //AMD
-
 define(['jquery','com/gotop', 'com/event', 'com/carousel', 'com/exposure'], function($, GoTop, Event, Carousel, Exposure) {
 
 	
@@ -31,6 +29,7 @@ define(['jquery','com/gotop', 'com/event', 'com/carousel', 'com/exposure'], func
 		$('.intro p').hide().eq(i).fadeIn();
 		i--;
 		i = i % len;
+		console.log(i)
 	});
 	Event.on('carousel_show_next', function() {
 		$('.intro p').hide().eq(i).fadeIn();
