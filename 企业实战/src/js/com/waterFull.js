@@ -11,7 +11,7 @@ define(['jquery'], function($) {
 				var _this = this;
 				this.isGetDate = true;
 				this.curPage = 1;
-				this.perPageCount = 3;
+				this.perPageCount = 9;
 				this.colLength = parseInt(this.ct.find('ul').width() / this.ct.find('li').outerWidth(true));
 				this.nodeWidth = this.ct.find('ul li').outerWidth(true);
 				this.nodeHeightArr = [];
@@ -21,7 +21,8 @@ define(['jquery'], function($) {
 
 				this.renderDate();
 
-				this.ct.find('#more').on('click', function() {
+				this.ct.find('#more').on('click', function(e) {
+					console.log(e)
 					if(_this.isGetDate) {
 						_this.renderDate();
 					}
@@ -29,23 +30,28 @@ define(['jquery'], function($) {
 			},
 			renderDate: function() {
 				var _this = this;
-				this.getData(function(newList) {
+				console.log(1);
+				this.getData(function (newsList) {
+					console.log();
 					_this.isGetDate = true;
-					$.each(newList, function(index,news) {
+					$.each(newsList, function (index,news) {
 						var node = _this.getNode(news);
+
 						$(node).find('img').load(function() {
 							_this.ct.find('ul').append(node);
-							_this.waterFall(node);
+							console.log();
+							 _this.waterFall(node);
+
 						});
 					})
 				});
 				this.isGetDate = false;
 			},
 
-			getData: function(jsoncallback) {
+			getData: function (jsoncallback) {
 				var _this = this;
 				$.ajax({
-					url: '//platform.sina.com.cn/slide/album_tech?jsoncallback=func&app_key=1271687855&num=3&page=4',
+					url: '//platform.sina.com.cn/slide/album_tech',
 					dataType: 'jsonp',
 					jsonp: 'jsoncallback',
 					data: {
@@ -53,10 +59,10 @@ define(['jquery'], function($) {
 						page: _this.curPage,
 						num: _this.perPageCount
 					}
-				}).done(function(ret) {
+				}).done(function (ret) {
 					if(ret && ret.status.code === '0'){
 						jsoncallback(ret.data);
-						console.log(ret.data);
+						console.log();
 						_this.curPage++;
 					}
 				}).fail(function() {
@@ -64,7 +70,8 @@ define(['jquery'], function($) {
 				})
 			},
 
-			getNode: function(news) {
+			getNode: function (news) {
+				
 				this.html = '';
 				this.html += '<li>';
 				this.html += 	'<a href="' + news.url + '">';
@@ -73,10 +80,12 @@ define(['jquery'], function($) {
 				this.html += 		'<p>' + news.short_intro + '</p>';
 				this.html += 	'</a>';
 				this.html += '</li>';
+				console.log($(this.html).text);
 				return $(this.html);
+				
 			},
 
-			waterFall: function(node) {
+			waterFall: function (node) {
 				var _this = this;
 				this.minValue = Math.min.apply(null,_this.nodeHeightArr);
 				this.minIndex = this.nodeHeightArr.indexOf(_this.minValue);
@@ -88,10 +97,10 @@ define(['jquery'], function($) {
 				this.nodeHeightArr[this.minIndex] += node.outerHeight(true);
 				this.ct.find('ul').height(Math.max.apply(null,_this.nodeHeightArr));
 			}
-		};
+		   };
 
 		return {
-			start: function($ct) {
+			start: function ($ct) {
 				new _load($ct);
 			}
 		}

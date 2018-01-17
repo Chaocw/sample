@@ -7,7 +7,7 @@
   <script src="//at.alicdn.com/t/font_449066_r0293j5dyhwwxw29.js"></script>
 </head>
 <body>
-<!--   <div class="pageone">
+  <div class="pageone">
     <div class="carousel">
       <ul class="img-ct">
         <li><img src="imgs/1.jpg"></li>
@@ -32,7 +32,7 @@
     <div class="wel layout">
       <h2>Welcome To Our Company!</h2>
       <h1>IT'S NICE TO MEET YOU</h1>
-      <div id="more"><h3><a href="">TELL ME MORE</a>
+      <div id="more1"><h3><a href="">TELL ME MORE</a>
       </div>
     </div>
   </div>
@@ -56,24 +56,32 @@
       <p class="summary1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
     </div>
     </div>
-  </div> -->
-  <div class="pagethree">
-    <h1 class="layout">PORTFOLIO</h1>
-    <p class="summary layout">Lorem ipsum dolor sit amet consectetur.</p>
-    <div class=".load-container">
-      <div class="load-wrap">
-        <ul class="portfolio clearfix">
-          <li class="hide"></li>
-        </ul>
-        <div class="load"></div>
-      </div>
-      <div class="loadmore">
-        <div id="more">Load More</div>
-        <div class="prompt">>></div>
-      </div>
-    </div>
   </div>
-<!--   <div class="pagefour">
+  <div class="portfolio">
+        <h2>PORTFOLIO</h2>
+        <h6>Lorem ipsum dolor sit amet consectetur.</h6>
+        <div class="load-container">
+            <div class="load-wrap">
+                <ul class="clearfix">
+                    <!--<li>
+                        <a href="javascript:;">
+                            <img src="" alt="">
+                            <h2>标题</h2>
+                            <p>段落</p>
+                        </a>
+                    </li>-->
+                    <!--用于计算li的宽度和列数，但不展示出来-->
+                    <li class="hide"></li>
+                </ul>
+                <div class="load"></div>
+            </div>
+            <div class="loadMore">
+                <div id="more">Load More</div>
+                <div class="prompt">>></div>
+            </div>
+        </div>
+    </div>
+  <div class="pagefour">
     <h1 class="layout">ABOUT</h1>
     <p class="summary layout">Lorem ipsum dolor sit amet consectetur.</p>
     <ul>
@@ -304,20 +312,8 @@ STORY!
         </ul>
       </div>
     </div>
-  </footer> -->
-  
-  <script src="src/js/bower_components/requirejs/require.js"></script>
-  <script>
-    requirejs.config({
-      baseUrl: "src/js",
-      paths: {
-        'jquery': 'bower_components/jquery/dist/jquery.min'
-      }
-    });
-
-    requirejs(['app/index']);
-
-  </script>
+  </footer>
+  <script data-main="./src/dist/js/index.merge.min.js" src="src/js/bower_components/requirejs/require.js"></script>
   
   
   
